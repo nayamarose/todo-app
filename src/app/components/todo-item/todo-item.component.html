@@ -1,0 +1,16 @@
+<div class="d-flex align-items-center justify-content-around task my-3">
+    <div>{{todo!.id}}</div>
+    <div class="todoTitle" [ngClass]="{'completed': completeTodo}" [ngStyle]="{'text-decoration': completeTodo ? 'line-through' : 'none'}"
+        *ngIf="!editTodo; else inputBlock" (click)="completeTodoToggle()">{{todo!.title}}</div>
+    <ng-template #inputBlock>
+        <input type="text" class="todo-form" [(ngModel)]="todoInput" placeholder="Update task...">
+    </ng-template>
+    <div class="my-2">
+        <button *ngIf="!editTodo; else elseBlock" class="btn btn-primary me-2 "
+            (click)="updateTodoToggle();">Edit</button>
+        <ng-template #elseBlock>
+            <button class="btn btn-primary me-2" (click)="updateTodo();">Update</button>
+        </ng-template>
+        <button class="btn btn-danger ms-2" (click)="deleteTodo()">Delete</button>
+    </div>
+</div>
