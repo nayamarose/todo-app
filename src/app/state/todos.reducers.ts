@@ -4,14 +4,13 @@ import { actions } from './todos.actions';
 import { TodoModel, todos } from "./todos.states"
 
 
-
-
 export const todoReducer = createReducer(
     //supplying the initial state
     todos,
 
     //add new todo to todos array
     on(actions.addTodoAction, (state: any, todo: any) => {
+      console.log(...state,todo , 'state and todo')
         return [...state,todo, ]
     }),
 

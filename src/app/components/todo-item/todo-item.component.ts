@@ -13,13 +13,32 @@ export class TodoItemComponent implements OnInit {
   completeTodo: boolean = false;
   @Input() todo?:TodoModel;
   todoInput?:string;
+  todoItems:any;
+  modal:boolean=false;
+  
 
+  clickEvent(e: any) {
+    if (e == 'modal-open' || e == 'modal-close') {
+      this.modal = !this.modal;
+    }
+    else {
+     
+    }
+  
+  
+  }
   constructor(private store: Store) { }
 
   ngOnInit(): void {
     
     this.completeTodo= this.todo!.completed
     this.todoInput = this.todo!.title;
+  }
+  editNote(todo:any){
+console.log(todo,'todo for edit');
+this.todoItems=todo;
+
+
   }
   updateTodoToggle(){
     this.editTodo = !this.editTodo;

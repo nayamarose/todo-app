@@ -1,29 +1,68 @@
 <div class="container-fluid">
-    <div class="row">
-       <div class="col-md-12 ps-0 pe-0">
-          <app-navbar></app-navbar>
-       </div>
-    </div>
-    <div class="row">
-       <div class="col-md-3  py-2 border-right">
-          <div class="card">
-             <div class="card-body">
-                <div class="row">
-                   <div class="col-md-12 py-1">
-                      <h4 class="card-title">Add Task</h4>
-                   </div>
-                   <div class="col-md-12 py-1">
-                      <app-todo-input></app-todo-input>
-                   </div>
-                </div>
-             </div>
-          </div>
-       </div>
-       <div class="col-md-9 py-2 todo-list">
-          <div class="mt-3">
-             <h3 class="card-title pb-4">To Do List</h3>
-             <app-todo-list></app-todo-list>
-          </div>
-       </div>
-    </div>
- </div>
+   <div class="row">
+      <div class="col-md-12 ps-0 pe-0">
+         <app-navbar></app-navbar>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-4  py-2 border-right" [ngClass]="{'d-none': !showAddTaskSection}">
+         <div class="card">
+            <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12 py-1">
+                     <h4 class="card-title">Add Task</h4>
+                     <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                           <button class="nav-link active" id="nav-note-tab" data-bs-toggle="tab"
+                              data-bs-target="#nav-note" type="button" role="tab" aria-controls="nav-note"
+                              aria-selected="true">Notes</button>
+                           <button class="nav-link" id="nav-reminder-tab" data-bs-toggle="tab"
+                              data-bs-target="#nav-reminder" type="button" role="tab" aria-controls="nav-reminder"
+                              aria-selected="false">Reminders</button>
+                           <button class="nav-link" id="nav-task-tab" data-bs-toggle="tab"
+                              data-bs-target="#nav-task" type="button" role="tab" aria-controls="nav-task"
+                              aria-selected="false">Tasks</button>
+                        </div>
+                     </nav>
+                     <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-note" role="tabpanel"
+                           aria-labelledby="nav-note-tab">
+                           <div class="row">
+                              <div class="col-md-12 py-1">
+                                 <app-todo-input [type]="'note'"></app-todo-input>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-reminder" role="tabpanel" aria-labelledby="nav-reminder-tab">
+                        
+                           <div class="row">
+                              <div class="col-md-12 py-1">
+                                 <app-todo-input [type]="'reminder'"></app-todo-input>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-task" role="tabpanel" aria-labelledby="nav-task-tab">
+                        
+                           <div class="row">
+                              <div class="col-md-12 py-1">
+                                 <app-todo-input [type]="'task'"></app-todo-input>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-8 py-2 todo-list">
+         <div class="mt-3">
+            <h3 class="card-title pb-4">To Do List
+               <button class="btn btn-primary d-block mt-3" *ngIf="showAddTaskButton" (click)="toggleAddTaskSection()">Add Notes</button>
+            </h3>
+            <app-todo-list></app-todo-list>
+         </div>
+      </div>
+   </div>
+</div>

@@ -2,7 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body{
-    overflow: hidden;
+    overflow: auto;
     
     
 }
@@ -75,6 +75,32 @@ li{
 
 }
 
+label {
+    color: #7A3E65!important; 
+}
 
+.card-body-1 {
+  
+    background-color: aliceblue;
+}
 
+.card-body-2{
+    background-color: antiquewhite;
+}
 
+.card-body-3{
+    background-color: khaki
+}
+
+.note-body {
+    background-color: antiquewhite;
+  }
+  
+  .reminder-body {
+    background-color: aliceblue;
+  }
+  
+  .task-body {
+    background-color: khaki;
+  }
+  

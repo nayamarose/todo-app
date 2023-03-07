@@ -1,5 +1,51 @@
-
 <div>
-<input [(ngModel)]="todoInput" class="todo-form-add"  type="text" placeholder="Add your task here...">
-<button class="btn btn-primary mt-4" (click)="addTodo()">Add</button>
+
+  <div *ngIf="type=='note'">
+    <label for="title" class="my-2">Title</label>
+    <input [(ngModel)]="todoInput.title" id="title" class="todo-form-add" type="text" placeholder="Title of the Note">
+
+    <label for="note" class="my-2">Note</label>
+    <input [(ngModel)]="todoInput.note" id="note" class="todo-form-add" placeholder="Enter a note">
+
+
+    <button class="btn btn-primary mt-4" (click)="addTodo()">Add</button>
+  </div>
+  <div *ngIf="type=='reminder'">
+    <label for="title" class="my-2">Title</label>
+    <input [(ngModel)]="todoInput.title" id="title" class="todo-form-add" type="text" placeholder="Title of the Note">
+
+    <label for="note" class="my-2">Note</label>
+    <input [(ngModel)]="todoInput.note" id="note" class="todo-form-add" placeholder="Enter a note">
+
+    <label for="date" class="my-2">Date</label>
+    <input [(ngModel)]="todoInput.date" id="date" class="todo-form-add" type="date">
+
+    <label for="dueDate" class="my-2">Due Date</label>
+    <input [(ngModel)]="todoInput.dueDate" id="dueDate" class="todo-form-add" type="date">
+
+    <button class="btn btn-primary mt-4" (click)="addTodo()">Add</button>
+
+  </div>
+
+  <div *ngIf="type=='task'">
+
+
+    <label for="title" class="my-2">Title</label>
+    <input [(ngModel)]="todoInput.title" id="title" class="todo-form-add" type="text" placeholder="Title of the Note">
+
+    <label for="note" class="my-2">Note</label>
+    <input [(ngModel)]="todoInput.note" id="note" class="todo-form-add" placeholder="Enter a note">
+
+    <label for="date" class="my-2">Date</label>
+    <input [(ngModel)]="todoInput.date" id="date" class="todo-form-add" type="date">
+
+    <label for="dueDate" class="my-2">Due Date</label>
+    <input [(ngModel)]="todoInput.dueDate" id="dueDate" class="todo-form-add" type="date">
+
+    <label for="file" class="my-2">Attach</label>
+    <input [(ngModel)]="todoInput.file" id="file" class="todo-form-add" type="file">
+
+    <button class="btn btn-primary mt-4" (click)="addTodo()">Add</button>
+
+  </div>
 </div>
