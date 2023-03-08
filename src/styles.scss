@@ -93,14 +93,42 @@ label {
 }
 
 .note-body {
-    background-color: antiquewhite;
+    background-color: antiquewhite!important;
   }
   
   .reminder-body {
-    background-color: aliceblue;
+    background-color: aliceblue!important;
   }
   
   .task-body {
-    background-color: khaki;
+    background-color: khaki!important;
   }
+  .edit-icon {
+    cursor: pointer;
+
+    &:hover {
+        svg {
+            path {
+                fill: rgba(128, 128, 128, .9);
+            }
+        }
+    }
+}
+
+// table {
+//     tr{
+        
+//     }
+// }
+// .table>:not(caption)>*>* {
+//     border-bottom: none!important;
+//     padding: 0.5rem 0.5rem;
+//     background-color: var(--bs-table-bg);
+//     border-bottom-width: 0px!important;
+//     box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+// }
+
+
+
+
   

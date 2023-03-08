@@ -5,9 +5,9 @@
       </div>
    </div>
    <div class="row">
-      <div class="col-md-4  py-2 border-right" [ngClass]="{'d-none': !showAddTaskSection}">
+      <div class="col-md-3  py-2 border-right" [ngClass]="{'d-none': !showAddTaskSection}">
          <div class="card">
-            <div class="card-body">
+            <div class="card-body" [ngClass]="{'note-body': type === 'note', 'reminder-body': type === 'reminder', 'task-body': type === 'task'}">
                <div class="row">
                   <div class="col-md-12 py-1">
                      <h4 class="card-title">Add Task</h4>
@@ -15,13 +15,13 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                            <button class="nav-link active" id="nav-note-tab" data-bs-toggle="tab"
                               data-bs-target="#nav-note" type="button" role="tab" aria-controls="nav-note"
-                              aria-selected="true">Notes</button>
+                              aria-selected="true" (click)="typeCheck('note')">Notes</button>
                            <button class="nav-link" id="nav-reminder-tab" data-bs-toggle="tab"
                               data-bs-target="#nav-reminder" type="button" role="tab" aria-controls="nav-reminder"
-                              aria-selected="false">Reminders</button>
+                              aria-selected="false" (click)="typeCheck('reminder')">Reminders</button>
                            <button class="nav-link" id="nav-task-tab" data-bs-toggle="tab"
                               data-bs-target="#nav-task" type="button" role="tab" aria-controls="nav-task"
-                              aria-selected="false">Tasks</button>
+                              aria-selected="false" (click)="typeCheck('task')">Tasks</button>
                         </div>
                      </nav>
                      <div class="tab-content" id="nav-tabContent">
@@ -29,7 +29,9 @@
                            aria-labelledby="nav-note-tab">
                            <div class="row">
                               <div class="col-md-12 py-1">
-                                 <app-todo-input [type]="'note'"></app-todo-input>
+                                 <app-todo-input [type]="'note'">
+                                    
+                                 </app-todo-input>
                               </div>
                            </div>
                         </div>
@@ -42,7 +44,7 @@
                            </div>
                         </div>
                         <div class="tab-pane fade" id="nav-task" role="tabpanel" aria-labelledby="nav-task-tab">
-                        
+                      
                            <div class="row">
                               <div class="col-md-12 py-1">
                                  <app-todo-input [type]="'task'"></app-todo-input>
@@ -56,12 +58,14 @@
             </div>
          </div>
       </div>
-      <div class="col-md-8 py-2 todo-list">
+      <div class="col-md-9 py-2 todo-list">
          <div class="mt-3">
             <h3 class="card-title pb-4">To Do List
                <button class="btn btn-primary d-block mt-3" *ngIf="showAddTaskButton" (click)="toggleAddTaskSection()">Add Notes</button>
             </h3>
-            <app-todo-list></app-todo-list>
+            <app-todo-list [typeFromLandingPage]="noteCheck ? 'note' : (reminderCheck ? 'reminder' : (taskCheck ? 'task' : ''))"></app-todo-list>
+
+          
          </div>
       </div>
    </div>

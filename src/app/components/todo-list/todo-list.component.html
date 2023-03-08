@@ -3,7 +3,9 @@
     <!-- <div class="no-data" *ngIf="todos.length<=0">
         Add Todo!
     </div> -->
+
+    
     <div *ngFor="let todo of todos;">
-        <app-todo-item [todo]="todo"></app-todo-item>
+        <app-todo-item [todo]="todo" type="{{typeFromLandingPage}}"></app-todo-item>
     </div>
 </div>

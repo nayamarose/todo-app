@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store'
 import { todoSelector } from 'src/app/state/todos.reducers';
 import { TodoModel } from 'src/app/state/todos.states';
@@ -10,10 +10,12 @@ import { TodoModel } from 'src/app/state/todos.states';
 })
 export class TodoListComponent implements OnInit {
 todos: TodoModel[]=[];
+@Input() typeFromLandingPage = '';
   constructor(private store: Store) { }
 
   ngOnInit(): void {
     this.loadTodos();
+    console.log(this.typeFromLandingPage)
   }
 
 

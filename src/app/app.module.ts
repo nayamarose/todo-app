@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { EditIconComponent } from './widgets/edit-icon/edit-icon.component';
+import { DeleteIconComponent } from './widgets/delete-icon/delete-icon.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditIconComponent } from './widgets/edit-icon/edit-icon.component';
     TodoListComponent,
     LandingPageComponent,
     NavbarComponent,
-    EditIconComponent
+    EditIconComponent,
+    DeleteIconComponent
   ],
   imports: [
     BrowserModule,

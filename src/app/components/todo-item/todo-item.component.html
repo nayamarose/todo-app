@@ -1,55 +1,30 @@
 <!-- Dialog box for logout starts here -->
 
-<!-- <div id="EditMask" class="d-flex align-items-center justify-content-center dialog-mask" [ngClass]="modal?'d-block' : 'd-none'">
-        <div class="dialog-box">
-            <div class="d-flex justify-content-center align-items-center dialog-body">
-                <h4 class="dialog-text-1">Edit To Do</h4>
-                 <label for="title" class="my-2">Title</label>
-    <input [(ngModel)]="todoInput.title" id="title" class="todo-form-add" type="text" placeholder="Title of the Note">
 
-    <label for="note" class="my-2">Note</label>
-    <input [(ngModel)]="todoInput.note" id="note" class="todo-form-add" placeholder="Enter a note">
 
-    <label for="date" class="my-2">Date</label>
-    <input [(ngModel)]="todoInput.date" id="date" class="todo-form-add" type="date">
-
-    <label for="dueDate" class="my-2">Due Date</label>
-    <input [(ngModel)]="todoInput.dueDate" id="dueDate" class="todo-form-add" type="date">
-
-    <label for="file" class="my-2">Attach</label>
-    <input [(ngModel)]="todoInput.file" id="file" class="todo-form-add" type="file">
-                <div class="pt-3 ">
-                    <button class="btn btn-primary" (click)="updateTodo();clickEvent('modal-close')">Update</button>
-                    <button class="btn btn-secondary ms-3" (click)="clickEvent('modal-close')">Cancel</button>
-                </div>
-            </div>
-    
-        </div>
-    </div> -->
-
-<!-- Dialog box for logout ends here -->
-
-<div class="d-flex align-items-center justify-content-around task my-3">
+<div class="d-flex align-items-center justify-content-around task my-3" [ngStyle]="{'background-color': getTypeColor('{{type}}')}">
+ 
 
     <table class=" table  main-table" width="98%">
-        <thead class=" ">
+        <thead class="mx-auto text-align-center ">
             <tr>
 
-                <th>
+                <th >
                     Sl.No
                 </th>
-                <th>
+                <th >
                     Title
-                </th>
-                <th>
+                </th >
+                <th >
                     Note
                 </th>
-                <th>
+                <th >
                     Date
-                <th>
+                <th >
                     Due Date
                 </th>
-                <th>
+                
+                <th >
                     Actions
                 </th>
             </tr>
@@ -67,32 +42,39 @@
                     <ng-template #inputBlock>
                         <input type="text" class="todo-form" [(ngModel)]="todoInput" placeholder="Update task...">
                     </ng-template>
-                </td>
-                <td class="pt-3 ">
-                    {{todo?.note}}
-                </td>
 
-                <td class="pt-3">
-                    {{todo?.date | date:'MMMM d y'}}
+                    <!-- <span class="d-block">
+                        <span *ngIf="!editTodo">{{todo?.note}}</span>
+                        <input *ngIf="editTodo" [(ngModel)]="todo!.note" class="todo-form" placeholder="Enter a note">
+                    </span> -->
                 </td>
                 <td class="pt-3">
-
-                    {{todo?.dueDate | date:'MMMM d y'}}
-
+                    <span *ngIf="!editTodo">{{todo?.note}}</span>
+                    <input *ngIf="editTodo" [(ngModel)]="todo!.note" class="todo-form" placeholder="Enter a note">
                 </td>
+                
                 <td class="pt-3">
-
-                    {{todo?.file}}
-
+                    <span *ngIf="!editTodo">{{todo?.date | date:'MMMM d y'}}</span>
+                    <input *ngIf="editTodo" [(ngModel)]="todo!.date" class="todo-form" type="date">
+                    <!-- <span class="d-block">
+                        <span *ngIf="!editTodo">{{todo?.dueDate | date:'MMMM d y'}}</span>
+                    <input *ngIf="editTodo" [(ngModel)]="todo!.dueDate" class="todo-form" type="date">
+                    </span> -->
                 </td>
-                <td class="pt-3 btn" type="button">
-                    <span *ngIf="!editTodo; else elseBlock" class="btn btn-primary me-2 "
-                        (click)="updateTodoToggle();editNote(todo);clickEvent('modal-open')">Edit</span>
+                
+                <td class="pt-3">
+                    <span *ngIf="!editTodo">{{todo?.dueDate | date:'MMMM d y'}}</span>
+                    <input *ngIf="editTodo" [(ngModel)]="todo!.dueDate" class="todo-form" type="date">
+                </td>
+               
+                <td class="pt-3 btn" >
+                    <span *ngIf="!editTodo; else elseBlock" 
+                        (click)="updateTodoToggle()"><app-edit-icon class="edit-icon"></app-edit-icon></span>
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary me-2" (click)="updateTodo();">Update</button>
+                        <button class="btn btn-primary me-2 d-block" (click)="updateTodo();">Update</button>
                     </ng-template>
                 </td>
-                <td class="pt-3 btn" type="button" (click)="deleteTodo()"><span class="btn btn-danger ms-2">Delete
+                <td class=" btn"  (click)="deleteTodo()"><span ><app-delete-icon></app-delete-icon>
                     </span>
     
                 </td>
